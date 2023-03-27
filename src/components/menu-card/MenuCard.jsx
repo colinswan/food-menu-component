@@ -17,7 +17,6 @@ const MenuCard = ({ onAddToCart }) => {
             <Content>
               <p>{item.title}</p>
               <h3>£{item.price.toFixed(2)}</h3>
-              {/* TODO create a function when clicks add to cart, adds the item to cart (maybe add in a property to the menuItems that says inCart === true; ?) */}
               <button onClick={() => onAddToCart(item)}>Add to Cart</button>
             </Content>
           </MenuCardContent>

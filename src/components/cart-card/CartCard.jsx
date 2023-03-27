@@ -6,6 +6,7 @@ const CartCard = ({
   handleDecreaseQuantity,
   handleIncreaseQuantity,
 }) => {
+  let totalPrice = 0;
   return (
     <Wrapper>
       {cartItems.length === 0 ? (
@@ -28,6 +29,7 @@ const CartCard = ({
                 <button onClick={() => handleIncreaseQuantity(item.id)}>
                   &gt;
                 </button>
+                <h2>£{(totalPrice = item.price * item.quantity).toFixed(2)}</h2>
               </QuantityControls>
             </Items>
           </CartCardContent>
@@ -58,7 +60,7 @@ const Wrapper = styled.div`
 const CartCardContent = styled.div`
   display: flex;
   height: 152.26901245117188px;
-  width: 370.27178955078125px;
+  width: 100%;
   left: 12.656982421875px;
   top: 17.4976806640625px;
   border-radius: 20px;
@@ -93,27 +95,56 @@ const ItemImage = styled.div`
     height: 1.5rem;
     width: 1.5rem;
     text-align: center;
-
-    z-index: 1;
   }
 `;
 
-const Items = styled.div``;
+const Items = styled.div`
+  float: 1;
+  padding-left: 1rem;
+
+  h4 {
+    font-size: 16px;
+  }
+
+  p {
+    font-size: 20px;
+    word-wrap: break-word;
+    width: 100%;
+    overflow-wrap: break-word;
+  }
+`;
 
 const QuantityControls = styled.div`
   display: flex;
   align-items: center;
 
   button {
-    background-color: transparent;
+    background-color: #6b06ef;
     border: none;
     cursor: pointer;
     font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    border-radius: 50%;
+    min-width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   span {
-    margin: 0 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16px 10px;
     font-size: 1rem;
+    width: 24px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-left: 21px;
   }
 `;
 
