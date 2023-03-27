@@ -7,40 +7,46 @@ const CartCard = ({
   handleIncreaseQuantity,
 }) => {
   let totalPrice = 0;
+  const overallTotal = cartItems.reduce((accumulator, item) => {
+    return accumulator + item.price * item.quantity;
+  }, 0);
   return (
     <Wrapper>
       {cartItems.length === 0 ? (
         <CartCardContent>Your Cart is empty</CartCardContent>
       ) : (
-        cartItems.map((item) => (
-          <>
-            <CartCardContent key={item.id}>
-              <ItemImage>
-                {item.image && <img src={item.image} alt={item.title} />}
-                <p>{item.quantity}</p>
-              </ItemImage>
-              <Items>
-                <p>{item.title} </p>
-                <h4>£{item.price.toFixed(2)}</h4>
-                <QuantityControls>
-                  <button onClick={() => handleDecreaseQuantity(item.id)}>
-                    &lt;
-                  </button>
-                  <span>{item.quantity}</span>
-                  <button onClick={() => handleIncreaseQuantity(item.id)}>
-                    &gt;
-                  </button>
-                  <h2>
-                    £{(totalPrice = item.price * item.quantity).toFixed(2)}
-                  </h2>
-                </QuantityControls>
-              </Items>
-            </CartCardContent>
-            <Separator />
-
-            {/* Totals here*/}
-          </>
-        ))
+        <>
+          {cartItems.map((item) => (
+            <React.Fragment key={item.id}>
+              <CartCardContent>
+                <ItemImage>
+                  {item.image && <img src={item.image} alt={item.title} />}
+                  <p>{item.quantity}</p>
+                </ItemImage>
+                <Items>
+                  <p>{item.title} </p>
+                  <h4>£{item.price.toFixed(2)}</h4>
+                  <QuantityControls>
+                    <button onClick={() => handleDecreaseQuantity(item.id)}>
+                      &lt;
+                    </button>
+                    <span>{item.quantity}</span>
+                    <button onClick={() => handleIncreaseQuantity(item.id)}>
+                      &gt;
+                    </button>
+                    <h2>
+                      £{(totalPrice = item.price * item.quantity).toFixed(2)}
+                    </h2>
+                  </QuantityControls>
+                </Items>
+              </CartCardContent>
+              <Separator />
+            </React.Fragment>
+          ))}
+          <OverallTotal>
+            <h4>Total:</h4> <h2>£{overallTotal.toFixed(2)}</h2>
+          </OverallTotal>
+        </>
       )}
     </Wrapper>
   );
@@ -130,7 +136,6 @@ const QuantityControls = styled.div`
     border: none;
     cursor: pointer;
     font-size: 1.2rem;
-    font-weight: bold;
     color: white;
     border-radius: 50%;
     min-width: 32px;
@@ -138,6 +143,7 @@ const QuantityControls = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 1px;
   }
 
   span {
@@ -162,8 +168,25 @@ const Separator = styled.span`
   background-color: hsl(266, 90%, 48%, 0.2);
   margin-bottom: 2rem;
 
-  &:last-child {
+  &:last-of-type {
     height: 5px;
+  }
+`;
+
+const OverallTotal = styled.div`
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  margin-top: 1rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+
+  h2 {
+    margin-left: 1rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
   }
 `;
 
