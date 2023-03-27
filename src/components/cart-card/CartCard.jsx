@@ -13,26 +13,33 @@ const CartCard = ({
         <CartCardContent>Your Cart is empty</CartCardContent>
       ) : (
         cartItems.map((item) => (
-          <CartCardContent key={item.id}>
-            <ItemImage>
-              {item.image && <img src={item.image} alt={item.title} />}
-              <p>{item.quantity}</p>
-            </ItemImage>
-            <Items>
-              <p>{item.title} </p>
-              <h4>£{item.price.toFixed(2)}</h4>
-              <QuantityControls>
-                <button onClick={() => handleDecreaseQuantity(item.id)}>
-                  &lt;
-                </button>
-                <span>{item.quantity}</span>
-                <button onClick={() => handleIncreaseQuantity(item.id)}>
-                  &gt;
-                </button>
-                <h2>£{(totalPrice = item.price * item.quantity).toFixed(2)}</h2>
-              </QuantityControls>
-            </Items>
-          </CartCardContent>
+          <>
+            <CartCardContent key={item.id}>
+              <ItemImage>
+                {item.image && <img src={item.image} alt={item.title} />}
+                <p>{item.quantity}</p>
+              </ItemImage>
+              <Items>
+                <p>{item.title} </p>
+                <h4>£{item.price.toFixed(2)}</h4>
+                <QuantityControls>
+                  <button onClick={() => handleDecreaseQuantity(item.id)}>
+                    &lt;
+                  </button>
+                  <span>{item.quantity}</span>
+                  <button onClick={() => handleIncreaseQuantity(item.id)}>
+                    &gt;
+                  </button>
+                  <h2>
+                    £{(totalPrice = item.price * item.quantity).toFixed(2)}
+                  </h2>
+                </QuantityControls>
+              </Items>
+            </CartCardContent>
+            <Separator />
+
+            {/* Totals here*/}
+          </>
         ))
       )}
     </Wrapper>
@@ -71,7 +78,7 @@ const ItemImage = styled.div`
   height: 65px;
   width: 65px;
   left: -15px;
-  top: -15px;
+  top: 0;
   border-radius: 20px;
 
   img {
@@ -107,7 +114,7 @@ const Items = styled.div`
   }
 
   p {
-    font-size: 20px;
+    font-size: 18px;
     word-wrap: break-word;
     width: 100%;
     overflow-wrap: break-word;
@@ -145,6 +152,18 @@ const QuantityControls = styled.div`
   h2 {
     font-size: 1.5rem;
     margin-left: 21px;
+  }
+`;
+
+const Separator = styled.span`
+  display: block;
+  height: 1px;
+  width: 100%;
+  background-color: hsl(266, 90%, 48%, 0.2);
+  margin-bottom: 2rem;
+
+  &:last-child {
+    height: 5px;
   }
 `;
 
