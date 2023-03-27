@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const FoodComponent = ({ Card, Title }) => {
+const FoodComponent = ({ Card, Title, ...props }) => {
   return (
     <Wrapper>
       <h1>{Title}</h1>
-      {Card}
+      {React.cloneElement(Card, { ...props })}
     </Wrapper>
   );
 };

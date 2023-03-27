@@ -12,7 +12,7 @@ const menuItems = [
     id: 1,
     title: "French Fries with Ketchup",
     price: 4.5,
-    image: frenchFriesImg, // Use the imported image directly
+    image: frenchFriesImg,
     alt: "french fries and ketchup on plate",
     bgColor: "#e4f0fc",
   },
@@ -20,7 +20,7 @@ const menuItems = [
     id: 2,
     title: "Salmon and Vegetables",
     price: 4.5,
-    image: salmonImg, // Use the imported image directly
+    image: salmonImg,
     alt: "Salmon and Vegetablesp on plate",
     bgColor: "#fbe4f0",
   },
@@ -28,7 +28,7 @@ const menuItems = [
     id: 3,
     title: "Spaghetti with Meat Sauce",
     price: 4.5,
-    image: spaghettiImg, // Use the imported image directly
+    image: spaghettiImg,
     alt: "Spaghetti with Meat Sauce on plate",
     bgColor: "#f7f7fe",
   },
@@ -36,7 +36,7 @@ const menuItems = [
     id: 4,
     title: "Bacon and Eggs",
     price: 4.5,
-    image: baconEggsImg, // Use the imported image directly
+    image: baconEggsImg,
     alt: "Bacon and Eggs on plate",
     bgColor: "#e4fdf2",
   },
@@ -44,7 +44,7 @@ const menuItems = [
     id: 5,
     title: "Chicken Salad",
     price: 4.5,
-    image: chickenSaladImg, // Use the imported image directly
+    image: chickenSaladImg,
     alt: "chickenSaladImg on plate",
     bgColor: "#e4f0fc",
   },
@@ -52,7 +52,7 @@ const menuItems = [
     id: 6,
     title: "Fish Sticks and Fries",
     price: 4.5,
-    image: fishStickImg, // Use the imported image directly
+    image: fishStickImg,
     alt: "Fish Sticks and Fries on plate",
     bgColor: "#fbe4f0",
   },
@@ -60,7 +60,7 @@ const menuItems = [
     id: 7,
     title: "Ravioli",
     price: 4.5,
-    image: ravioliImg, // Use the imported image directly
+    image: ravioliImg,
     alt: "Ravioli on plate",
     bgColor: "#f7f7fe",
   },
@@ -68,7 +68,7 @@ const menuItems = [
     id: 8,
     title: "Tortellini",
     price: 4.5,
-    image: tortelliniImg, // Use the imported image directly
+    image: tortelliniImg,
     alt: "tortelliniImg on plate",
     bgColor: "#e4fdf2",
   },

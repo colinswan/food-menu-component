@@ -1,16 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-// import menuItems from "./menuItems"; // Import the data file
 import menuItems from "./menuItems.js";
 
-const MenuCard = () => {
-  // Q. how to change branch name from master to main?
-  // A. git branch -m master main
+const MenuCard = ({ onAddToCart }) => {
   return (
     <>
+      {/* Loop through the menuItems array */}
       {menuItems.map((item) => (
         <Wrapper key={item.id}>
+          {/* Render a separate card for each item */}
           <MenuCardContent bgColor={item.bgColor}>
             <Image>
               <img src={item.image} alt={item.alt} />
@@ -18,7 +17,8 @@ const MenuCard = () => {
             <Content>
               <p>{item.title}</p>
               <h3>£{item.price.toFixed(2)}</h3>
-              <button>Add to Cart</button>
+              {/* TODO create a function when clicks add to cart, adds the item to cart (maybe add in a property to the menuItems that says inCart === true; ?) */}
+              <button onClick={() => onAddToCart(item)}>Add to Cart</button>
             </Content>
           </MenuCardContent>
         </Wrapper>
@@ -45,7 +45,6 @@ const MenuCardContent = styled.div`
   top: 17.4976806640625px;
   border-radius: 20px;
 
-  /* TODO DYNAMICALLY ADD COLOR FROM DATA FILE */
   background-color: ${(props) => props.bgColor};
 `;
 
