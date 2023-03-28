@@ -1,9 +1,19 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
+import styled, { keyframes, css } from "styled-components";
 
 import menuItems from "./menuItems.js";
 
 const MenuCard = ({ onAddToCart }) => {
+  const [animation, setAnimation] = useState(null);
+
+  const handleAddToCart = (item) => {
+    setAnimation(item.id);
+    onAddToCart(item);
+
+    setTimeout(() => {
+      setAnimation(null);
+    }, 1000);
+  };
   return (
     <>
       {/* Loop through the menuItems array */}
@@ -17,7 +27,12 @@ const MenuCard = ({ onAddToCart }) => {
             <Content>
               <p>{item.title}</p>
               <h3>£{item.price.toFixed(2)}</h3>
-              <button onClick={() => onAddToCart(item)}>Add to Cart</button>
+              <AnimatedButton
+                onClick={() => handleAddToCart(item)}
+                animate={animation === item.id}
+              >
+                Add to Cart
+              </AnimatedButton>
             </Content>
           </MenuCardContent>
         </Wrapper>
@@ -26,7 +41,9 @@ const MenuCard = ({ onAddToCart }) => {
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.div.attrs({
+  className: "Wrapper",
+})`
   position: relative;
   height: 178.6322021484375px;
   width: 382.92877197265625px;
@@ -35,7 +52,9 @@ const Wrapper = styled.div`
   border-radius: 1px;
 `;
 
-const MenuCardContent = styled.div`
+const MenuCardContent = styled.div.attrs({
+  className: "Wrapper",
+})`
   display: flex;
 
   height: 152.26901245117188px;
@@ -47,7 +66,9 @@ const MenuCardContent = styled.div`
   background-color: ${(props) => props.bgColor};
 `;
 
-const Image = styled.div`
+const Image = styled.div.attrs({
+  className: "Image",
+})`
   position: absolute;
   height: 149px;
   width: 144px;
@@ -63,7 +84,9 @@ const Image = styled.div`
   }
 `;
 
-const Content = styled.div`
+const Content = styled.div.attrs({
+  className: "Content",
+})`
   position: absolute;
   height: 149px;
   width: 144px;
@@ -99,6 +122,40 @@ const Content = styled.div`
     font-size: 16px;
     font-weight: 700;
   }
+`;
+
+const bounce = keyframes`
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+`;
+
+const AnimatedButton = styled.button.attrs({
+  className: "AnimatedButton",
+})`
+  position: absolute;
+  height: 32px;
+  width: 130px;
+  left: 0px;
+  bottom: -15px;
+  border-radius: 20px;
+  background-color: #6b06ef;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  animation: ${(props) =>
+    props.animate
+      ? css`
+          ${bounce} 0.6s ease infinite
+        `
+      : "none"};
 `;
 
 export default MenuCard;

@@ -60,6 +60,7 @@ function App() {
         Card={<MenuCard onAddToCart={addToCart} />}
         Title={"To Go Menu"}
       />
+
       <FoodComponent
         Card={
           <CartCard
@@ -74,7 +75,9 @@ function App() {
   );
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.div.attrs({
+  className: "Wrapper",
+})`
   position: relative;
   display: flex;
   justify-content: center;
@@ -89,6 +92,15 @@ const Wrapper = styled.div`
 
   /* TODO Mobile devices */
   /* mobile devices */
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: space-between;
+    background-position: left center, right top, right bottom;
+    background-size: 100%, 100%, 100%;
+    /* set height to fit everything in it */
+    height: 100%;
+  }
 `;
 
 export default App;

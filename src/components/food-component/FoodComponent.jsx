@@ -10,7 +10,9 @@ const FoodComponent = ({ Card, Title, ...props }) => {
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.div.attrs({
+  className: "Wrapper",
+})`
   height: 50.75rem;
   width: 23.44rem;
   left: 320px;
@@ -26,6 +28,16 @@ const Wrapper = styled.div`
     font-size: 2rem;
     margin-top: 3.06rem;
     margin-left: 2.33rem;
+  }
+
+  /* media  */
+  @media (max-width: 768px) {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    border-radius: 0px;
+    margin-right: 0;
+    margin-bottom: 2rem;
   }
 `;
 

@@ -52,7 +52,9 @@ const CartCard = ({
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.div.attrs({
+  className: "Wrapper",
+})`
   height: 178.6322021484375px;
   width: 382.92877197265625px;
   left: 0px;
@@ -70,7 +72,9 @@ const Wrapper = styled.div`
   }
 `;
 
-const CartCardContent = styled.div`
+const CartCardContent = styled.div.attrs({
+  className: "CartCardContent",
+})`
   display: flex;
   height: 152.26901245117188px;
   width: 100%;
@@ -79,7 +83,9 @@ const CartCardContent = styled.div`
   border-radius: 20px;
 `;
 
-const ItemImage = styled.div`
+const ItemImage = styled.div.attrs({
+  className: "ItemImage",
+})`
   position: relative;
   height: 65px;
   width: 65px;
@@ -111,7 +117,9 @@ const ItemImage = styled.div`
   }
 `;
 
-const Items = styled.div`
+const Items = styled.div.attrs({
+  className: "Items",
+})`
   float: 1;
   padding-left: 1rem;
 
@@ -127,7 +135,9 @@ const Items = styled.div`
   }
 `;
 
-const QuantityControls = styled.div`
+const QuantityControls = styled.div.attrs({
+  className: "QuantityControls",
+})`
   display: flex;
   align-items: center;
 
@@ -161,7 +171,9 @@ const QuantityControls = styled.div`
   }
 `;
 
-const Separator = styled.span`
+const Separator = styled.span.attrs({
+  className: "Separator",
+})`
   display: block;
   height: 1px;
   width: 100%;
@@ -173,7 +185,9 @@ const Separator = styled.span`
   }
 `;
 
-const OverallTotal = styled.div`
+const OverallTotal = styled.div.attrs({
+  className: "OverallTotal",
+})`
   display: flex;
   justify-content: right;
   align-items: center;
