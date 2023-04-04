@@ -6,6 +6,7 @@ import menuItems from "./menuItems.js";
 const MenuCard = ({ onAddToCart }) => {
   const [animation, setAnimation] = useState(null);
 
+  console.log(menuItems);
   const handleAddToCart = (item) => {
     setAnimation(item.id);
     onAddToCart(item);
